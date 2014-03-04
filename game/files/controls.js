@@ -66,29 +66,7 @@ THREE.MyControls = function ( camera ) {
 				rollLeft=true;
 				break;
       case 67: //c
-				console.log(glob.faceReplacement);
-				break;
-      case 86: //v
-        pos=glob.geometry.attributes.position.array;
-        //12 vertex coords per face
-				//console.log("pos.length: "+pos.length+ " pos needed: "+glob.faceCount*12);
-        console.log("% Pos Allocated:" + Math.round(glob.faceCount*12/pos.length*100));
-				break;
-      case 66: //b
-        //display(glob.accel,'accel');
-        display(glob.velocity,'velocity');
-        display(glob.angularVelocity,'angularV');
-				break;
-      case 78: //n
-        display(glob.CI,'CI');
-        console.log('mass: '+glob.numCubes);
-        //display(glob.torque,'torque');
-        //console.log('rot ratio: '+glob.torque.length()/glob.CI.elements[0]);
-        console.log('trans ratio: '+1/glob.numCubes);
-				break;
-      case 77: //n
-        console.log("Draws per render: "+glob.geometry.offsets.length);
-        console.log("#Faces: "+glob.faceCount);
+				console.log(camera.position)
 				break;
 		}
 

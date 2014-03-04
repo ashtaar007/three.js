@@ -10112,7 +10112,6 @@ THREE.AreaLight = function ( hex, intensity ) {
 
 THREE.AreaLight.prototype = Object.create( THREE.Light.prototype );
 
-
 /**
  * @author mrdoob / http://mrdoob.com/
  * @author alteredq / http://alteredqualia.com/
@@ -18031,7 +18030,8 @@ THREE.ShaderChunk = {
 
 			"float unpackDepth( const in vec4 rgba_depth ) {",
 
-				"const vec4 bit_shift = vec4( 1.0 / ( 256.0 * 256.0 * 256.0 ), 1.0 / ( 256.0 * 256.0 ), 1.0 / 256.0, 1.0 );",
+				//"const vec4 bit_shift = vec4( 1.0 / ( 256.0 * 256.0 * 256.0 ), 1.0 / ( 256.0 * 256.0 ), 1.0 / 256.0, 1.0 );",
+        "const vec4 bit_shift = vec4( 1.0 / ( 255.0 * 256.0 * 256.0 ), 1.0 / ( 255.0 * 256.0 ), 1.0 / 255.0, 256.0/255.0 );",
 				"float depth = dot( rgba_depth, bit_shift );",
 				"return depth;",
 
@@ -19700,14 +19700,20 @@ THREE.ShaderLib = {
 			"}"
 
 		].join("\n"),
-
+/*
+//"const vec4 bit_shift = vec4( 1.0 / ( 256.0 * 256.0 * 256.0 ), 1.0 / ( 256.0 * 256.0 ), 1.0 / 256.0, 1.0 );",
+        "const vec4 bit_shift = vec4( 1.0 / ( 255.0 * 256.0 * 256.0 ), 1.0 / ( 255.0 * 256.0 ), 1.0 / 255.0, 256.0/255.0 );",
+				"float depth = dot( rgba_depth, bit_shift );",
+				"return depth;",
+*/
 		fragmentShader: [
 
 			"vec4 pack_depth( const in float depth ) {",
 
-				"const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );",
-				"const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );",
-				"vec4 res = fract( depth * bit_shift );",
+				//"const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );",
+				"const vec4 bit_shift = vec4( 255.0 * 256.0 * 256.0, 255.0 * 256.0, 255.0, 255.0/256.0 );",
+        "vec4 res = fract( depth * bit_shift );",
+        "const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );",
 				"res -= res.xxyz * bit_mask;",
 				"return res;",
 
@@ -28278,9 +28284,6 @@ THREE.Curve.prototype.getTangentAt = function ( u ) {
 };
 
 
-
-
-
 /**************************************************************
  *	Utils
  **************************************************************/
@@ -30167,7 +30170,6 @@ THREE.SplineCurve3 = THREE.Curve.create(
 
 );
 
-
 // THREE.SplineCurve3.prototype.getTangent = function(t) {
 // 		var v = new THREE.Vector3();
 // 		var c = [];
@@ -30822,8 +30824,6 @@ THREE.Animation.prototype.interpolate = function ( p0, p1, p2, p3, t, t2, t3 ) {
 
 };
 
-
-
 // Get next key with
 
 THREE.Animation.prototype.getNextKeyWith = function ( type, h, key ) {
@@ -30998,8 +30998,6 @@ THREE.KeyFrameAnimation.prototype.play = function( loop, startTimeMS ) {
 
 };
 
-
-
 // Pause
 
 THREE.KeyFrameAnimation.prototype.pause = function() {
@@ -31017,7 +31015,6 @@ THREE.KeyFrameAnimation.prototype.pause = function() {
 	this.isPaused = !this.isPaused;
 
 };
-
 
 // Stop
 
@@ -31058,7 +31055,6 @@ THREE.KeyFrameAnimation.prototype.stop = function() {
 	}
 
 };
-
 
 // Update
 
@@ -34576,7 +34572,6 @@ THREE.DirectionalLightHelper.prototype.update = function () {
 
 }();
 
-
 /**
  * @author WestLangley / http://github.com/WestLangley
  */
@@ -35374,7 +35369,6 @@ THREE.LensFlare = function ( texture, size, distance, blending, color ) {
 
 THREE.LensFlare.prototype = Object.create( THREE.Object3D.prototype );
 
-
 /*
  * Add: adds another flare
  */
@@ -35401,7 +35395,6 @@ THREE.LensFlare.prototype.add = function ( texture, size, distance, blending, co
 
 };
 
-
 /*
  * Update lens flares update positions on all flares based on the screen position
  * Set myLensFlare.customUpdateCallback to alter the flares in your project specific way.
@@ -35427,18 +35420,6 @@ THREE.LensFlare.prototype.updateLensFlares = function () {
 	}
 
 };
-
-
-
-
-
-
-
-
-
-
-
-
 
 /**
  * @author alteredq / http://alteredqualia.com/

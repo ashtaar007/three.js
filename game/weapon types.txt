@@ -1,0 +1,36 @@
+Missile Mounts:
+Rapid Shot
+
+Missiles:
+
+Armored
+Fast
+Boring
+Guidance System:
+Dumb
+Emf detection
+Homing Signal
+
+Lasers:
+
+Spinal Mount
+Arc
+Turret
+Fixed Position
+
+Ballistic Weapons:
+Rapid Fire
+
+Other Devices:
+Tractor Beam
+Cloaking Device
+Shield Stealer
+Ai Bug
+Antivirus
+Homing Signal Beacon
+
+Drive Types:
+Teleportation
+
+
+Armor Types:

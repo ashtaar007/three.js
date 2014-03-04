@@ -11,8 +11,8 @@ THREE.FlyControls = function ( object, domElement ) {
 
 	// API
 
-	this.movementSpeed = 1.0;
-	this.rollSpeed = 0.005;
+	this.movementSpeed = 10.0;
+	this.rollSpeed = 0.05;
 
 	this.dragToLook = false;
 	this.autoForward = false;

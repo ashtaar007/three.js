@@ -1,0 +1,26 @@
+  this.id = THREE.GeometryIdCount ++;
+	this.uuid = THREE.Math.generateUUID();
+	this.name = '';
+	this.vertices = [];
+	this.colors = [];  // one-to-one vertex colors, used in ParticleSystem and Line
+	this.faces = [];
+	this.faceVertexUvs = [[]];
+	this.morphTargets = [];
+	this.morphColors = [];
+	this.morphNormals = [];
+	this.skinWeights = [];
+	this.skinIndices = [];
+	this.lineDistances = [];
+	this.boundingBox = null;
+	this.boundingSphere = null;
+	this.hasTangents = false;
+	this.dynamic = true; // the intermediate typed arrays will be deleted when set to false
+	// update flags
+	this.verticesNeedUpdate = false;
+	this.elementsNeedUpdate = false;
+	this.uvsNeedUpdate = false;
+	this.normalsNeedUpdate = false;
+	this.tangentsNeedUpdate = false;
+	this.colorsNeedUpdate = false;
+	this.lineDistancesNeedUpdate = false;
+	this.buffersNeedUpdate = false;
